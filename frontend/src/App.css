@@ -11,9 +11,11 @@
   height: 100vh;
   width: 100vw;
 }
-
+body{
+overflow: scroll;
+}
 .top {
-  position: fixed;
+  
   bottom: 40%;
   left:30%;
   height: 300px;
@@ -25,12 +27,14 @@
   border-radius: 5pt;
   font-family: 'Roboto Condensed', sans-serif; 
   background-color: rgb(241, 255, 255);
+  margin: 10px;
+
 }
 
 .chat{
   
   background-color: rgb(255, 176, 4);
-  position: fixed;
+  position: absolute;
   bottom:32%;
   left: 28%;
   height:340px;
@@ -38,30 +42,51 @@
   padding:32px;
   border-radius: 8pt;
   box-shadow: 2px -1px 5px rgb(0, 54, 0);
+
 }
+
 
 ul{
   list-style-type: none;
+  margin-bottom: 30px;
 }
 
+.flex{
+  display:flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  position: fixed;
+  
+  left: 30vw;
+  top:15vh;
+  width: 70vw;
+  height: 70vh;
+}
 
 .login {
-  position: fixed;
-  bottom: 500px;
-  left:30%;
+  
+  
+  height: 180px;
+  width: 200px;
+  margin: 20px;
+  margin-top:5px;
+  margin-bottom: 3px;
   background-color: orange;
   padding: 10px;
   border-radius: 10pt;
   box-shadow: 1px 1px 1px orangered;
   font-family: 'Roboto Condensed', sans-serif;
   color:white;
-    text-shadow: 1px 1px 1px orangered;
-
+  text-shadow: 1px 1px 1px orangered;
+  
+  
 }
 .create {
-  position: fixed;
-  bottom: 500px;
-  left:50%;
+  margin: 20px;
+  height: 180px;
+  width: 200px;
+  margin-top:5px;
+  margin-bottom: 3px;
   background-color: orange;
   padding: 10px;
   border-radius: 10pt;
@@ -72,11 +97,12 @@ ul{
 }
 
 .chatbar {
-  width: 450px;
+  width: 30vw;
   padding: 6px;
   border: 2px solid rgb(189, 101, 1);
   border-radius: 5pt;
   outline: none;
+  
 }
 
 .logbut{
@@ -92,7 +118,7 @@ input[type=submit]{
   margin: 7px;
   font-size: 12pt;
   font-family: 'Abril Fatface', cursive;
-    /* font-family: 'Titan One', cursive; 
+  /* font-family: 'Titan One', cursive; 
   font-family: 'Roboto Condensed', sans-serif; */
   transition: all 0.3s ease-in-out;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.541);
@@ -106,17 +132,20 @@ input[type=submit]:hover{
 }
 
 .topbar{
-height: 50px;
-width: 100vw;
-background-color: rgb(255, 176, 4);
-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.623);
-font-family: 'Abril Fatface', cursive;
-color: white;
-font-size: 35px;
-padding: 5px;
-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.575);
-transition: all 0.3s ease-in-out;
+  height: 50px;
+  width: 100vw;
+  background-color: rgb(255, 176, 4);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.623);
+  font-family: 'Abril Fatface', cursive;
+  color: white;
+  font-size: 35px;
+  padding: 5px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.575);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 40px;
 }
+
+
 
 .topbar:hover{
   color: rgb(253, 253, 109);
@@ -141,24 +170,62 @@ transition: all 0.3s ease-in-out;
   font-size: 15pt;
   text-align: left;
   box-shadow: 2px 2px 2px rgba(2, 90, 2, 0.658);
+  display:block;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+  background: #f1f1f1; 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(243, 184, 21); 
+  background: rgb(243, 184, 21); 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+  background: #555; 
+}
+
+@media only screen 
+and (max-device-width: 1000px)
+{ .chat{
+left: 0vw;
+width: 100vw;
+} 
+
+.top{
+  width: 80vw;
+}
+
+.actives{
+  display:hidden;
+  height: 10px; 
+}
+.topbar{
+  position:absolute;
+  top:80vh;
+}
+.chatbar{
+  position:fixed;
+  width:100vw;
+  left: 0vw;
+  top:70vh;
+}
+#subbut{
+  position: fixed;
+  top: -100px
+}
+
+.flex{
+  position:fixed;
+  top: 5vh;
+  left: 15vw;
+}
 }

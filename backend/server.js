@@ -45,7 +45,6 @@ app.post("/login", (req, res)=> {
     if (serverState.users[parsedUser.username] === parsedUser.password){
         let sessionID = Math.floor(Math.random()*10000000)
         serverState.livesession[parsedUser.username]=sessionID
-        console.log(serverState)
         let x = serverState.messages.concat({message: 'User '+parsedUser.username+ ' has joined the chat!'})
         serverState.messages = x
         let success = {out: 'success', id: sessionID, msgs: serverState.messages }
@@ -62,7 +61,6 @@ app.post('/submit', (req, res)=>{
     }
     else{
     let x = serverState.messages.concat(parsedMsg)
-    console.log(serverState.messages)
     serverState.messages=x
     res.send(JSON.stringify(serverState.messages))}
 })

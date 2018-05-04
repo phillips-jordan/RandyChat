@@ -22,20 +22,22 @@ class App extends Component {
         .then(x => x.text())
         .then(y => {
           let parsedY = JSON.parse(y);
-          this.setState({ messages: parsedY })});
+          if (this.state.loggedin && this.state.messages.length!=parsedY.length) {
+            this.updateScroll();
+          }
+          this.setState({ messages: parsedY })
+        });
       fetch("/activeUsers")
                 .then(x => x.text())
                 .then(y => {
                   let parsedY = JSON.parse(y);
                   this.setState({ actives: parsedY });
-                  if(this.state.loggedin){
-                    this.updateScroll()
-                  }
+                  
                 })}
         ,
       600
     );
-         
+
     
   };
 
@@ -75,7 +77,7 @@ class App extends Component {
     e.preventDefault();
     let name = document.getElementById("creNam").value;
     let pass = document.getElementById("crePas").value;
-    if (pass.length > 3 && name.length > 3) {
+    if (pass.length > 3 && name.length > 3 && name.length<=12) {
       fetch("/create", {
         method: "POST",
         body: JSON.stringify({ username: name, password: pass })
@@ -85,7 +87,7 @@ class App extends Component {
           y === "success" ? alert("Account created") : alert("Username Taken");
         });
     } else {
-      alert("PASSWORD OR USERNAME TOO SHORT");
+      alert("PASSWORD OR USERNAME DOES NOT MEET ACCOUNT CREATION REQUIREMENTS\nUSERNAME MUST BE LONGER THAN 3 CHARACTERS AND SHORTER THAN 12");
     }
     document.getElementById("creNam").value = "";
     document.getElementById("crePas").value = "";
@@ -129,9 +131,10 @@ class App extends Component {
     if (!this.state.loggedin) {
       return <div className="body">
           <div className="topbar">RandyChat</div>
+          <div className='flex'>
           <div className="login">
             <div className="header" style={{ fontSize: "13pt" }}>
-              LOG IN?
+              LOG IN?<br/>
             </div>
 
             <form onSubmit={this.handleLogin}>
@@ -156,6 +159,7 @@ class App extends Component {
               <input className="logbut" type="submit" />
             </form>
           </div>
+          </div>
         </div>;
     } else {
       return <div className="body">
@@ -176,7 +180,7 @@ class App extends Component {
             <div className="bottom">
               <form onSubmit={this.handleSubmit}>
                 <input className="chatbar" type="text" onChange={this.handleChange} id="inp" />
-                <input type="submit" />
+                <input type="submit" id='subbut'/>
               </form>
             </div>
           </div>
