@@ -106,7 +106,10 @@ class App extends Component {
       })
         .then(x => x.text())
         .then(y => {
+          console.log(y)
+        
           let parsedY = JSON.parse(y);
+
           if (parsedY.out === "success") {
             this.setState({
               loggedin: true,
