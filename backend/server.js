@@ -6,9 +6,39 @@ app.use(bodyParser.raw({type:"*/*"}))
 
 let serverState = {
     messages:[],
-    users:[],
+    users:{Randy420:'admin11'},
     livesession: []
 }
+
+let keys = [
+"88D93634D66",
+"A5902716975",
+"3B2CA5924ED",
+"8A28022D9C9",
+"38AC12287BB",
+"DEDD9B44D63",
+"0E6CEF1ADB2",
+"F4D4FA43758",
+"F9DBABA128A",
+"B857C2EB75B",
+"408BE8450CC",
+"872A03CC2DE",
+"24000334243",
+"F24134F405A",
+"7EC40ACDC16",
+"40076D36020",
+"1FF5FC4B0BC",
+"BF91C899184",
+"275003CF657",
+"B5C513F1239",
+"37E5B5DF551",
+"21369EA08FF",
+"4A44E75602F",
+"516FC10A15D",
+"68A814A74F1",
+"594E519AE49"
+
+]
 
 app.get('/activeUsers', (req, res)=>{
     let active = []
@@ -30,9 +60,13 @@ app.get('/activeUsers', (req, res)=>{
 })
 
 app.post('/create', (req,res)=> {
+  
     let parsedUser = JSON.parse(req.body.toString())
-     if (!serverState.users[parsedUser.username]) {
+     if (!serverState.users[parsedUser.username] && keys.indexOf(parsedUser.reg)>=0) {
        serverState.users[parsedUser.username] = parsedUser.password;
+       keys = keys.filter(x=>{
+           return x!==parsedUser.reg
+       })
        res.send('success')
      }
      else {
