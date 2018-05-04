@@ -100,6 +100,7 @@ app.post('/submit', (req, res)=>{
 })
 
 app.get('/messages', (req, res)=>{
+    console.log('TEST')
     res.send(JSON.stringify(serverState.messages))
 })
 
