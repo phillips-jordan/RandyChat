@@ -104,6 +104,6 @@ app.get('/messages', (req, res)=>{
     res.send(JSON.stringify(serverState.messages))
 })
 
-app.listen(4000, ()=>{
-    console.log('listening 4k')
+app.listen(3001, ()=>{
+    console.log('listening 3001')
 })
