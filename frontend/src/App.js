@@ -21,6 +21,7 @@ class App extends Component {
       fetch("/messages")
         .then(x => x.text())
         .then(y => {
+          console.log(y);
           let parsedY = JSON.parse(y);
           if (this.state.loggedin && this.state.messages.length!=parsedY.length) {
             this.updateScroll();
@@ -106,7 +107,7 @@ class App extends Component {
       })
         .then(x => x.text())
         .then(y => {
-          console.log(y)
+          
         
           let parsedY = JSON.parse(y);
 
