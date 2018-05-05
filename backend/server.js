@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static(__dirname + '/build'));
+}
+
 app.use(bodyParser.raw({type:"*/*"}))
 
 let serverState = {
@@ -39,6 +43,8 @@ let keys = [
 "594E519AE49"
 
 ]
+
+
 
 app.get('/activeUsers', (req, res)=>{
     let active = []
